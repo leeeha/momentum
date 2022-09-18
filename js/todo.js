@@ -2,11 +2,13 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
 
-const toDos = [];
+const TODOS_KEY = "todos"
+
+let toDos = []; 
 
 function saveToDos(){
     // 로컬 스토리지에 배열을 문자열 형태로 추가  
-    localStorage.setItem("todos", JSON.stringify(toDos)); 
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos)); 
 }
 
 function deleteToDo(event){
@@ -37,9 +39,24 @@ function handleToDoSubmit(event){
 
     const newTodo = toDoInput.value; 
     toDoInput.value = ""; 
+
+    // 초기에 toDos 배열은 항상 비어있음. 
     toDos.push(newTodo); // 배열에 추가 
     paintToDo(newTodo); // 브라우저에 표시 
     saveToDos(); // 로컬 스토리지에 배열 저장 
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if(savedToDos !== null){
+    // 문자열을 배열로 변환   
+    const parsedToDos = JSON.parse(savedToDos);
+
+    // 로컬 스토리지에 저장된 값으로 toDos 배열 초기화 
+    toDos = parsedToDos; 
+
+    // 배열의 각 항목에 대해 동일한 함수 실행 
+    parsedToDos.forEach(paintToDo); 
+}
