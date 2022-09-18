@@ -45,9 +45,8 @@ const quotes = [
 const quote = document.querySelector("#quote span:first-child");
 const author = document.querySelector("#quote span:last-child");
 
+// 랜덤으로 인용구 선택 
 // round는 반올림, ceil은 올림, floor는 내림
 const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)]; 
-
 quote.innerText = todaysQuote.quote;
 author.innerText = todaysQuote.author;
-

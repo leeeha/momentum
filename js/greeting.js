@@ -7,6 +7,7 @@ const USERNAME_KEY = "username";
 
 function onLoginSubmit(event){
     event.preventDefault();
+    
     // form °¨Ãß±â 
     loginForm.classList.add(HIDDEN_CLASSNAME);
 
@@ -36,3 +37,4 @@ if(savedUsername === null){
     // show the greeting 
     paintGreetings(savedUsername); 
 }
+

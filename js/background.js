@@ -1,9 +1,11 @@
 const images = ["0.jpeg", "1.jpeg", "2.jpeg"];
 
+// 랜덤으로 이미지 선택 
 const chosenImage = images[Math.floor(Math.random() * images.length)];  
 
-// js에서 html 요소 생성하고 body에 추가하기 
+// img 태그 생성 후 src 속성 설정 
 const bgImage = document.createElement("img");
 bgImage.src = `img/${chosenImage}`;
-document.body.appendChild(bgImage);
 
+// body 태그에 img 태그 추가하기 
+document.body.appendChild(bgImage);
